@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.css"; // Importing the CSS file
 
-function Navbar({ userName }) {
+function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-left">

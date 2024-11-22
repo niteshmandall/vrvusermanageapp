@@ -3,14 +3,13 @@
   justify-content: space-between;
   align-items: center;
   background-color: rgb(33, 55, 33); /* Bluish-greenish color */
-  padding: 10px;
+  padding: 5px;
   color: white;
-  width: 100vw;
-  position: fixed;
+  position: relative;
 }
 
 .navbar-left {
-  margin-left: 50px;
+  margin-left: 100px;
 }
 
 .navbar-right {
