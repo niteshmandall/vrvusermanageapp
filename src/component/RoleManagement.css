@@ -1,0 +1,80 @@
+/* Container styling */
+.role-management-container {
+  padding: 20px; /* Padding around the entire container */
+  background-color: #fff;
+  border-radius: 8px; /* Rounded corners for box effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin: 20px auto; /* Center the box with auto margins */
+  max-width: 1200px; /* Limit the width for better layout */
+}
+
+.role-management {
+  width: 100%; /* Ensure content fits the container */
+}
+
+/* Table styling */
+.role-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.role-table th,
+.role-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.role-table th {
+  background-color: rgba(128, 128, 128, 0.403);
+  font-weight: bold;
+}
+
+/* Permissions styling */
+.permissions {
+  display: flex;
+  gap: 10px;
+}
+
+.permissions span {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.permissions .read {
+  background-color: #4caf50; /* Green */
+}
+
+.permissions .write {
+  background-color: #2196f3; /* Blue */
+}
+
+.permissions .delete {
+  background-color: #f44336; /* Red */
+}
+
+.permissions .delete.disabled {
+  background-color: #ccc; /* Gray for disabled */
+  color: #777;
+}
+
+/* Action buttons */
+.action-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  margin-right: 5px;
+}
+
+.action-btn.edit-btn {
+  background-color: #2196f3; /* Blue */
+}
+
+.action-btn.delete-btn {
+  background-color: #f44336; /* Red */
+}

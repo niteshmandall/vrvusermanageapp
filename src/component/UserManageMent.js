@@ -11,9 +11,9 @@ function UserManageMent() {
           <p>User Management</p>
           <div className="link">
             <Link to="/">Home</Link>
-            <Link to="/dashboard">User Management</Link>
+            <Link to="/userdetails">User Management</Link>
             <Link to="/roles">Role Management</Link>
-            <Link to="/permissions">Permissions</Link>
+            <Link to="/permission">Permissions</Link>
           </div>
         </div>
         {/* Header Right */}
