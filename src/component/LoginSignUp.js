@@ -1,11 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./LoginSignUp.css";
 
 function LoginSignUp() {
   const [isSignUp, setIsSignUp] = useState(false);
+  const navigate = useNavigate();
 
   const toggleAuthMode = () => {
     setIsSignUp(!isSignUp);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/dashboard");
   };
 
   return (
@@ -18,7 +25,7 @@ function LoginSignUp() {
           <h2>{isSignUp ? "Sign Up" : "Login"}</h2>
         </div>
 
-        <form className="auth-form">
+        <form className="auth-form" onSubmit={handleSubmit}>
           {isSignUp && (
             <div className="form-group">
               <label>Username</label>
