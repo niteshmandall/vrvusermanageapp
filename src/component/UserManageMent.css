@@ -1,0 +1,209 @@
+/* User Management Styles */
+.usermanage {
+  background-color: #f0f0f0;
+  padding: 20px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 80px;
+  margin-top: 10px;
+}
+
+.headerleft {
+  display: flex;
+  flex-direction: column;
+}
+
+.headerleft > p {
+  font-size: 24px; /* Keep the desired font size */
+  margin: 0; /* Remove the default margin */
+  font-weight: bold;
+}
+
+.link {
+  display: flex; /* Align links in a row */
+  gap: 10px; /* Space between links */
+  margin-top: 0; /* Ensure no extra space between p and links */
+}
+
+.link a {
+  text-decoration: none;
+  color: #b1b3b5;
+  font-weight: bold;
+  font-size: 8px;
+}
+
+.link a:hover {
+  text-decoration: underline;
+  color: #218838;
+}
+
+.headerright {
+  display: flex;
+  align-items: center;
+  margin-right: 45px;
+  margin-top: 15px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  position: relative; /* Position relative for absolute positioning of the icon */
+}
+
+.search input {
+  padding: 10px 40px 10px 10px; /* Add padding to the left for the icon */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 210px; /* Fixed width for the input */
+}
+
+.search-btn {
+  position: absolute; /* Position the button absolutely */
+  right: 10px; /* Align to the right */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust for vertical centering */
+  background: none; /* No background */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.search-icon {
+  width: 20px; /* Set the width of the search icon */
+  height: 20px; /* Set the height of the search icon */
+}
+
+.addbtn .btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px; /* Add padding to the left for the icon */
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.addbtn .btn:hover {
+  background-color: #218838;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 40px;
+    margin-top: 10px;
+  }
+
+  .headerleft {
+    margin-bottom: 10px;
+  }
+
+  .headerright {
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+    margin-left: 54px;
+  }
+
+  .addbtn .btn {
+    padding: 9.5px; /* Add padding to the left for the icon */
+    border-radius: 4px;
+  }
+}
+
+/* General Styles for Smaller Devices (742px and below) */
+@media (max-width: 742px) {
+  .header {
+    padding-left: 20px;
+    padding-right: 5px;
+    margin-top: 5px;
+  }
+
+  .headerleft {
+    margin-right: 10px; /* Add space between sections */
+  }
+
+  .headerleft > p {
+    font-size: 18px; /* Adjust font size */
+    margin-bottom: 5px; /* Add space below the title */
+    margin: 0;
+  }
+
+  .link {
+    display: flex; /* Keep links in a row */
+    flex-wrap: wrap; /* Allow links to wrap if necessary */
+    gap: 5px; /* Reduce spacing between links */
+    margin-top: 0; /* Ensure no extra space between p and links */
+  }
+
+  .link a {
+    font-size: 8px; /* Smaller font size for links */
+  }
+
+  .headerright {
+    flex: 1; /* Allow it to grow or shrink */
+    display: flex; /* Maintain horizontal alignment */
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center; /* Center vertically */
+    margin-bottom: 12px;
+  }
+
+  .search {
+    flex: 1 1 60%; /* Take up 60% of the row if available */
+    margin-right: 10px; /* Add spacing between search and button */
+  }
+
+  .search input {
+    width: 100%; /* Take up full available width */
+    padding: 9px;
+    font-size: 14px;
+  }
+  .search-icon {
+    width: 15px; /* Set the width of the search icon */
+    height: 15px; /* Set the height of the search icon */
+  }
+  .addbtn .btn {
+    flex: 1 1 30%; /* Take up 30% of the row if available */
+    padding: 9px;
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+/* Styles for Extra Small Screens (480px and below) */
+@media (max-width: 480px) {
+  .header {
+    padding: 5px;
+  }
+
+  .headerleft > p {
+    font-size: 16px; /* Smaller font size */
+  }
+
+  .link {
+    gap: 3px; /* Reduce spacing further */
+  }
+
+  .link a {
+    font-size: 8px; /* Adjust link text size */
+    padding: 3px; /* Smaller padding for compact design */
+  }
+
+  .search {
+    flex: 1 1 100%; /* Full width for search bar */
+    margin-bottom: 5px; /* Add spacing between search and button */
+  }
+
+  .addbtn .btn {
+    flex: 1 1 100%; /* Full width for button */
+    font-size: 12px;
+  }
+}
