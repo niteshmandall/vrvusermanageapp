@@ -33,6 +33,18 @@ function Permission() {
     );
   };
 
+  const handleRoleNameChange = (index, value) => {
+    const updatedRoles = [...roles];
+    updatedRoles[index].name = value;
+    setRoles(updatedRoles);
+  };
+
+  const saveRoles = () => {
+    // Logic to save roles (e.g., send to backend or update state)
+    console.log("Roles saved:", roles);
+    alert("Roles saved successfully!"); // Placeholder for actual save logic
+  };
+
   return (
     <div className="permission-box">
       <div className="permission-container">
@@ -48,7 +60,16 @@ function Permission() {
           <tbody>
             {roles.map((role, index) => (
               <tr key={index}>
-                <td>{role.name}</td>
+                <td>
+                  <input
+                    type="text"
+                    value={role.name}
+                    onChange={(e) =>
+                      handleRoleNameChange(index, e.target.value)
+                    }
+                    placeholder="Enter designation"
+                  />
+                </td>
                 <td>
                   <input
                     type="checkbox"
@@ -74,6 +95,11 @@ function Permission() {
             ))}
           </tbody>
         </table>
+        <div className="button-container">
+          <button onClick={saveRoles} className="save-role-btn">
+            Save
+          </button>
+        </div>
       </div>
     </div>
   );

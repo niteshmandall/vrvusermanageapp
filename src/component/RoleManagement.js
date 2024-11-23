@@ -9,6 +9,7 @@ function RoleManagement() {
           <thead>
             <tr>
               <th>Name</th>
+              <th>Profile</th>
               <th>Designation</th>
               <th>Permission (R, W, D)</th>
               <th>Actions</th>
@@ -17,6 +18,11 @@ function RoleManagement() {
           <tbody>
             <tr>
               <td>John Doe</td>
+              <td>
+                <li>Email:</li>
+                <li>ContactNo:</li>
+                <li>Upload here Image:</li>
+              </td>
               <td>Manager</td>
               <td>
                 <div className="permissions">
@@ -32,6 +38,11 @@ function RoleManagement() {
             </tr>
             <tr>
               <td>Jane Smith</td>
+              <td>
+                <li>Email:</li>
+                <li>ContactNo:</li>
+                <li>Upload here Image:</li>
+              </td>
               <td>Team Lead</td>
               <td>
                 <div className="permissions">
@@ -47,6 +58,9 @@ function RoleManagement() {
             </tr>
           </tbody>
         </table>
+        <div className="button-container">
+          <button className="save-role-btn">Save</button>
+        </div>
       </div>
     </div>
   );
