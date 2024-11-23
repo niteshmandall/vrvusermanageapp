@@ -8,6 +8,7 @@ import LoginSignUp from "./LoginSignUp";
 
 function UserManageMent() {
   const [activeComponent, setActiveComponent] = useState("userdetails");
+  const [currentLinkName, setCurrentLinkName] = useState("User Management");
 
   const renderComponent = () => {
     switch (activeComponent) {
@@ -29,18 +30,42 @@ function UserManageMent() {
       <div className="header">
         {/* Header Left */}
         <div className="headerleft">
-          <p>User Management</p>
+          <p>{currentLinkName}</p>
           <div className="link">
-            <Link to="/" onClick={() => setActiveComponent("/")}>
+            <Link
+              to="/"
+              onClick={() => {
+                setActiveComponent("/");
+                setCurrentLinkName("Home");
+              }}
+            >
               Home
             </Link>
-            <Link to="#" onClick={() => setActiveComponent("userdetails")}>
+            <Link
+              to="#"
+              onClick={() => {
+                setActiveComponent("userdetails");
+                setCurrentLinkName("User Management");
+              }}
+            >
               User Management
             </Link>
-            <Link to="#" onClick={() => setActiveComponent("roles")}>
+            <Link
+              to="#"
+              onClick={() => {
+                setActiveComponent("roles");
+                setCurrentLinkName("Role Management");
+              }}
+            >
               Role Management
             </Link>
-            <Link to="#" onClick={() => setActiveComponent("permissions")}>
+            <Link
+              to="#"
+              onClick={() => {
+                setActiveComponent("permissions");
+                setCurrentLinkName("Permissions");
+              }}
+            >
               Permissions
             </Link>
           </div>
