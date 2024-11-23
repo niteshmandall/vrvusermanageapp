@@ -15,6 +15,12 @@ function LoginSignUp() {
     setError(""); // Clear error on toggle
   };
 
+  const storeUserData = (email, username, password) => {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    users.push({ email, username, password });
+    localStorage.setItem("users", JSON.stringify(users));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -33,17 +39,29 @@ function LoginSignUp() {
     }
 
     // Simulate authentication (replace with actual API call)
-    const isAuthenticated = true; // Replace with actual authentication logic
-    if (isAuthenticated) {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const existingUser = users.find((user) => user.email === email);
+
+    if (isSignUp) {
+      if (existingUser) {
+        setError("Email already exists. Please log in.");
+        return;
+      }
       // Store the username and profileImage in localStorage
       localStorage.setItem("username", username);
-      // Store a default profile image or the image uploaded by the user
-      localStorage.setItem("profileImage", "https://via.placeholder.com/30");
-
-      // Redirect to the dashboard page
+      localStorage.setItem("profileImage", "https://via.placeholder.com/30"); // Placeholder image
+      storeUserData(email, username, password); // Store user data
       navigate("/dashboard");
     } else {
-      setError("Authentication failed. Please try again.");
+      // Login logic
+      if (existingUser && existingUser.password === password) {
+        // Store the username and profileImage in localStorage
+        localStorage.setItem("username", existingUser.username);
+        localStorage.setItem("profileImage", "https://via.placeholder.com/30"); // Placeholder image
+        navigate("/dashboard");
+      } else {
+        setError("Authentication failed. Please try again.");
+      }
     }
   };
 

@@ -12,15 +12,10 @@ function Navbar() {
     const storedUsername = localStorage.getItem("username");
     const storedProfileImage = localStorage.getItem("profileImage");
 
-    if (storedUsername) {
-      setUsername(storedUsername); // Set the username
-    }
-    if (storedProfileImage) {
-      setProfileImage(storedProfileImage); // Set the profile image
-    }
-  }, []); // This effect runs only once when the component mounts
+    if (storedUsername) setUsername(storedUsername);
+    if (storedProfileImage) setProfileImage(storedProfileImage);
+  }, []);
 
-  // Handle file selection to upload a new profile image
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -29,11 +24,10 @@ function Navbar() {
         setProfileImage(reader.result); // Update the profile image state
         localStorage.setItem("profileImage", reader.result); // Save the new profile image in localStorage
       };
-      reader.readAsDataURL(file); // Read the file as a data URL
+      reader.readAsDataURL(file);
     }
   };
 
-  // Trigger file input click when the profile image is clicked
   const handleProfileImageClick = () => {
     document.getElementById("file-input").click(); // Trigger hidden file input click
   };
@@ -47,12 +41,12 @@ function Navbar() {
         <div className="profile">
           {username ? (
             <>
-              <span>{username}</span> {/* Display the username */}
+              <span>{username}</span>
               <img
                 src={profileImage}
                 alt="Profile"
                 className="profile-image"
-                onClick={handleProfileImageClick} // Allow the user to click and update profile image
+                onClick={handleProfileImageClick}
                 style={{
                   cursor: "pointer",
                   borderRadius: "50%",
@@ -63,13 +57,13 @@ function Navbar() {
               <input
                 type="file"
                 accept="image/*"
-                onChange={handleFileChange} // Handle file change for new image
+                onChange={handleFileChange}
                 style={{ display: "none" }}
                 id="file-input"
               />
             </>
           ) : (
-            <span>Guest</span> // If no username or profile image, show "Guest"
+            <span>Guest</span>
           )}
         </div>
       </div>
