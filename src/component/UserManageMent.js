@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./UserManageMent.css";
+import UserManageMentDetails from "./UserManageMentDetails";
+import RoleManagement from "./RoleManagement";
+import Permission from "./Permission";
+import LoginSignUp from "./LoginSignUp";
 
 function UserManageMent() {
+  const [activeComponent, setActiveComponent] = useState("userdetails");
+
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case "/":
+        return <LoginSignUp />;
+      case "userdetails":
+        return <UserManageMentDetails />;
+      case "roles":
+        return <RoleManagement />;
+      case "permissions":
+        return <Permission />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="usermanage">
       <div className="header">
@@ -10,10 +31,18 @@ function UserManageMent() {
         <div className="headerleft">
           <p>User Management</p>
           <div className="link">
-            <Link to="/">Home</Link>
-            <Link to="/userdetails">User Management</Link>
-            <Link to="/roles">Role Management</Link>
-            <Link to="/permission">Permissions</Link>
+            <Link to="/" onClick={() => setActiveComponent("/")}>
+              Home
+            </Link>
+            <Link to="#" onClick={() => setActiveComponent("userdetails")}>
+              User Management
+            </Link>
+            <Link to="#" onClick={() => setActiveComponent("roles")}>
+              Role Management
+            </Link>
+            <Link to="#" onClick={() => setActiveComponent("permissions")}>
+              Permissions
+            </Link>
           </div>
         </div>
         {/* Header Right */}
@@ -29,6 +58,9 @@ function UserManageMent() {
           </div>
         </div>
       </div>
+
+      {/* Render Active Component Below */}
+      <div className="nested-content">{renderComponent()}</div>
     </div>
   );
 }

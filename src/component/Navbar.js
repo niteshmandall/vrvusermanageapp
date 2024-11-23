@@ -9,6 +9,7 @@ function Navbar() {
       </div>
       <div className="navbar-right">
         <div className="profile">
+          {/* when user come to dashboard name their show according to auth */}
           <span>NameShow</span>
           <img
             src="https://via.placeholder.com/30" // Placeholder for profile image
