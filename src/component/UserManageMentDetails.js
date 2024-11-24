@@ -11,11 +11,13 @@ function UserManagementDetails({ users }) {
   useEffect(() => {
     const savedStatuses =
       JSON.parse(localStorage.getItem("userStatuses")) || {};
-    const initialStatuses = users.map(
-      (user) => savedStatuses[user.id] || user.status || "Active"
+    
+    // Initialize statuses only once
+    const initialStatuses = users.map((user) => 
+      savedStatuses[user.id] || user.status || "Active"
     );
     setUserStatuses(initialStatuses);
-  }, [users]);
+  }, []); // Empty dependency array to run only on mount
 
   const handleStatusChange = (index, event) => {
     const newStatus = event.target.value;
@@ -74,8 +76,8 @@ function UserManagementDetails({ users }) {
                 </td>
                 <td>
                   <select
-                    value={userStatuses[index]}
-                    onChange={(e) => handleStatusChange(index, e)}
+                    value={userStatuses[users.indexOf(user)]} // Use index of user in the original array
+                    onChange={(e) => handleStatusChange(users.indexOf(user), e)}
                   >
                     <option value="Active">Active</option>
                     <option value="Inactive">Inactive</option>
