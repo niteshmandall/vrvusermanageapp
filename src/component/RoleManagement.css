@@ -56,6 +56,10 @@
   background-color: #f44336; /* Red */
 }
 
+.permissions .add {
+  background-color: #4caf50; /* Red */
+}
+
 .permissions .delete.disabled {
   background-color: #ccc; /* Gray for disabled */
   color: #777;

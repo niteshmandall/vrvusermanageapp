@@ -41,14 +41,24 @@ function UserManageMent() {
   };
 
   const handleSaveRoles = (updatedRoles) => {
-    setRoles(updatedRoles); // Update roles in parent state
+    const updatedUsers = users.map((user, index) => ({
+      ...user,
+      designation: updatedRoles[index]?.designation || user.designation,
+      email: updatedRoles[index]?.email || user.email,
+      contactNo: updatedRoles[index]?.contactNo || user.contactNo,
+    }));
+    setUsers(updatedUsers);
+    setRoles(updatedRoles);
   };
 
-  const handleSavePermissions = (updatedPermissions) => {
-    const updatedRoles = roles.map((role, index) => ({
-      ...role,
-      permissions: updatedPermissions[index]?.permissions || role.permissions,
+  const handleSavePermissions = (updatedRoles) => {
+    const updatedUsers = users.map((user, index) => ({
+      ...user,
+      designation: updatedRoles[index]?.designation || user.designation,
+      email: updatedRoles[index]?.email || user.email,
+      contactNo: updatedRoles[index]?.contactNo || user.contactNo,
     }));
+    setUsers(updatedUsers);
     setRoles(updatedRoles);
   };
 

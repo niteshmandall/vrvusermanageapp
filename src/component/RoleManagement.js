@@ -45,10 +45,11 @@ function RoleManagement({ roles, saveUserDetails, onSave }) {
         <table className="role-table">
           <thead>
             <tr>
+              {/* that action will go to usermanagementdetails file */}
               <th>Name</th>
               <th>Profile (Email, Contact No)</th>
               <th>Designation</th>
-              <th>Permission (R, W, D)</th>
+              <th>Permission (R, W, D, A)</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -92,6 +93,9 @@ function RoleManagement({ roles, saveUserDetails, onSave }) {
                     </span>
                     <span className="delete">
                       {role.permissions.delete ? "D" : "-"}
+                    </span>
+                    <span className="add">
+                      {role.permissions.add ? "A" : "-"}
                     </span>
                   </div>
                 </td>
