@@ -1,0 +1,33 @@
+.pagination {
+  display: flex;
+  justify-content: flex-end; /* Align pagination to the right */
+  align-items: center; /* Center vertically */
+  margin: 20px 0; /* Add some margin above and below */
+}
+
+.pagination-button {
+  margin: 0 5px; /* Add space between buttons */
+  padding: 8px 12px; /* Add padding for better click area */
+  border: 1px solid #007bff; /* Border color */
+  background-color: #fff; /* Background color */
+  color: #007bff; /* Text color */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.3s, color 0.3s; /* Transition for hover effect */
+}
+
+.pagination-button:hover {
+  background-color: #007bff; /* Change background on hover */
+  color: #fff; /* Change text color on hover */
+}
+
+.pagination-button:disabled {
+  background-color: #e9ecef; /* Light gray background for disabled */
+  color: #6c757d; /* Gray text for disabled */
+  cursor: not-allowed; /* Not allowed cursor for disabled */
+}
+
+.active {
+  background-color: #007bff; /* Active page button color */
+  color: #fff; /* Active page text color */
+}

@@ -1,49 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Pagination from "./Pagination"; // Import the Pagination component
 import "./Permission.css";
 
-function Permission() {
-  const [roles, setRoles] = useState([
-    {
-      name: "Manager",
-      permissions: { read: false, write: false, delete: false },
-    },
-    {
-      name: "Staff",
-      permissions: { read: false, write: false, delete: false },
-    },
-    {
-      name: "LeadTeam",
-      permissions: { read: false, write: false, delete: false },
-    },
-  ]);
+function Permission({ roles, saveUserDetails, onSave }) {
+  const [updatedRoles, setUpdatedRoles] = useState(roles);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
-  const handlePermissionChange = (roleIndex, permission) => {
-    setRoles((prevRoles) =>
-      prevRoles.map((role, index) =>
-        index === roleIndex
-          ? {
-              ...role,
-              permissions: {
-                ...role.permissions,
-                [permission]: !role.permissions[permission],
-              },
-            }
-          : role
-      )
-    );
+  // Update local state when roles prop changes
+  useEffect(() => {
+    setUpdatedRoles(roles);
+  }, [roles]);
+
+  const handleRoleNameChange = (index, newName) => {
+    const newRoles = [...updatedRoles];
+    newRoles[index].designation = newName;
+    setUpdatedRoles(newRoles);
   };
 
-  const handleRoleNameChange = (index, value) => {
-    const updatedRoles = [...roles];
-    updatedRoles[index].name = value;
-    setRoles(updatedRoles);
+  const handlePermissionChange = (roleIndex, permission) => {
+    const newRoles = [...updatedRoles];
+    newRoles[roleIndex].permissions[permission] =
+      !newRoles[roleIndex].permissions[permission];
+    setUpdatedRoles(newRoles);
   };
 
   const saveRoles = () => {
-    // Logic to save roles (e.g., send to backend or update state)
-    console.log("Roles saved:", roles);
-    alert("Roles saved successfully!"); // Placeholder for actual save logic
+    onSave(updatedRoles);
   };
+
+  // Calculate the current roles to display
+  const indexOfLastRole = currentPage * itemsPerPage;
+  const indexOfFirstRole = indexOfLastRole - itemsPerPage;
+  const currentRoles = updatedRoles.slice(indexOfFirstRole, indexOfLastRole);
 
   return (
     <div className="permission-box">
@@ -58,12 +47,12 @@ function Permission() {
             </tr>
           </thead>
           <tbody>
-            {roles.map((role, index) => (
+            {currentRoles.map((role, index) => (
               <tr key={index}>
                 <td>
                   <input
                     type="text"
-                    value={role.name}
+                    value={role.designation}
                     onChange={(e) =>
                       handleRoleNameChange(index, e.target.value)
                     }
@@ -95,11 +84,20 @@ function Permission() {
             ))}
           </tbody>
         </table>
-        <div className="button-container">
+        <div
+          className="button-container"
+          style={{ justifyContent: "flex-end" }}
+        >
           <button onClick={saveRoles} className="save-role-btn">
             Save
           </button>
         </div>
+        <Pagination
+          totalItems={updatedRoles.length}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
       </div>
     </div>
   );
